@@ -10,19 +10,20 @@
 
 HIDE_STEREOTYPE()
 
-Person(organizador, "Organizador do evento", "Responsavel pela criação e planejamento dos eventos")
-Person(membros, "Membros de equipe", "Usuários escalado para eventos",  $sprite="users")
-Container(spa, "SPA", "React", "Front end", $sprite="react")
-Container(api, "API", "Ruby on Rails", "Back end", $sprite="ruby_on_rails")
-ContainerDb(db, "Database", "MySQL", "Holds product, order and invoice information", $sprite="mysql")
+Person(organizador, "Organizador do evento", "Responsável pela criação e planejamento dos eventos")
+Person(lider, "Líder de equipe", "Responsável pela gestão e escala de sua equipe")
+Person(membros, "Membros de equipe", "Usuários escalados para eventos",  $sprite="users")
+Container(spa, "SPA", "React", "Front-end", $sprite="react")
+Container(api, "API", "Ruby on Rails", "Back-end", $sprite="ruby_on_rails")
+ContainerDb(db, "Database", "MySQL", "Persite toda configuração de membros e eventos.", $sprite="mysql")
 
 System_Ext(sns, "Servico de notificações (SNS)", "Envia notificações para os usuarios via mensagem de texto (SMS) ou Email",$sprite="aws")
 
 Rel(organizador, spa, "Cria os eventos, equipes e escalas", "https")
+Rel(lider, spa, "Gerencia sua equipe e escalas", "https")
 Rel(membros, spa, "Responde a escalação dos eventos, visualiza escala", "https")
 Rel_R(spa, api, "Uses", "GraphQL")
-Rel(api, db, "Reads/Writes")
+Rel(api, db, "Leitura e escrita")
 Rel_R(api, sns, "Envia notificações")
-
 
 @enduml
