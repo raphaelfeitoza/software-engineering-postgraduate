@@ -1,0 +1,28 @@
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/react.puml
+!include DEVICONS/ruby_on_rails.puml
+!include DEVICONS/mysql.puml
+!include DEVICONS/aws.puml
+!include FONTAWESOME/users.puml
+
+HIDE_STEREOTYPE()
+
+Person(organizador, "Organizador do evento", "Responsavel pela criação e planejamento dos eventos")
+Person(membros, "Membros de equipe", "Usuários escalado para eventos",  $sprite="users")
+Container(spa, "SPA", "React", "Front end", $sprite="react")
+Container(api, "API", "Ruby on Rails", "Back end", $sprite="ruby_on_rails")
+ContainerDb(db, "Database", "MySQL", "Holds product, order and invoice information", $sprite="mysql")
+
+System_Ext(sns, "Servico de notificações (SNS)", "Envia notificações para os usuarios via mensagem de texto (SMS) ou Email",$sprite="aws")
+
+Rel(organizador, spa, "Cria os eventos, equipes e escalas", "https")
+Rel(membros, spa, "Responde a escalação dos eventos, visualiza escala", "https")
+Rel_R(spa, api, "Uses", "GraphQL")
+Rel(api, db, "Reads/Writes")
+Rel_R(api, sns, "Envia notificações")
+
+
+@enduml
