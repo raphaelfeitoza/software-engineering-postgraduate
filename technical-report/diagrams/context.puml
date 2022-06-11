@@ -12,7 +12,7 @@ HIDE_STEREOTYPE()
 
 Person(organizador, "Organizador do evento", "Responsável pela criação e planejamento dos eventos")
 Person(lider, "Líder de equipe", "Responsável pela gestão e escala de sua equipe")
-Person(membros, "Membros de equipe", "Usuários escalados para eventos",  $sprite="users")
+Person(membros, "Membros de equipe", "Trabalhadores escalados para eventos",  $sprite="users")
 
 System(spe, "Sistema de Planejamento de Eventos", "Permite a configuração dos eventos, equipes e escalas.")
 System_Ext(sns, "Sistema de notificações", "Envia notificações para os usuarios via mensagem de texto (SMS) ou Email")
