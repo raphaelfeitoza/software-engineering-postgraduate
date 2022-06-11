@@ -1,0 +1,32 @@
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/react.puml
+!include DEVICONS/ruby_on_rails.puml
+!include DEVICONS/mysql.puml
+!include DEVICONS/aws.puml
+!include FONTAWESOME/users.puml
+
+HIDE_STEREOTYPE()
+
+Person(organizador, "Organizador do evento", "Responsável pela criação e planejamento dos eventos")
+Person(lider, "Líder de equipe", "Responsável pela gestão e escala de sua equipe")
+Person(membros, "Membros de equipe", "Usuários escalados para eventos",  $sprite="users")
+
+System_Boundary(spe, "Sistema de Planejamento de Eventos") {
+    Container(spa, "SPA", "React e Bootstrap", "Front-end: Disponibiliza as interfaces gráficas aos usuários via navegador de internet.", $sprite="react")
+    Container(api, "API", "Ruby on Rails", "Back-end: Implementação da API e regras de negócio.", $sprite="ruby_on_rails")
+    ContainerDb(db, "Database", "MySQL", "Persite toda informação dos eventos e usuários.", $sprite="mysql")
+}
+
+System_Ext(sns, "Servico de notificações (AWS SNS)", "Envia notificações para os usuarios via mensagem de texto (SMS) ou E-mail",$sprite="aws")
+
+Rel(organizador, spa, "Cria os eventos, equipes e escalas", "HTTPS")
+Rel(lider, spa, "Gerencia sua equipe e escalas", "HTTPS")
+Rel(membros, spa, "Responde a escalação dos eventos, visualiza escala", "HTTPS")
+Rel_R(spa, api, "Chamadas à API", "GraphQL/HTTPS")
+Rel(api, db, "Leitura e escrita")
+Rel_R(api, sns, "Envia notificações (SMS ou E-mail)")
+
+@enduml
