@@ -15,7 +15,7 @@ Person(lider, "Líder de equipe", "Responsável pela gestão e escala de sua equ
 Person(membros, "Membros de equipe", "Usuários escalados para eventos",  $sprite="users")
 
 System_Boundary(spe, "Sistema de Planejamento de Eventos") {
-    Container(spa, "SPA", "React e Bootstrap", "Front-end: Disponibiliza as interfaces gráficas aos usuários via navegador de internet.", $sprite="react")
+    Container(spa, "SPA", "React e Bootstrap", "Front-end: Aplicação de página única (single-page application - SPA)", $sprite="react")
     Container(api, "API", "Ruby on Rails", "Back-end: Implementação da API e regras de negócio.", $sprite="ruby_on_rails")
     ContainerDb(db, "Database", "MySQL", "Persite toda informação dos eventos e usuários.", $sprite="mysql")
 }
