@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one_functions_bateria:
+  event_definition: one
+  team_function: bateria
+  quantity: 1
+
+one_functions_guitarra:
+  event_definition: one
+  team_function: guitarrista
+  quantity: 1
+
+one_functions_baixo:
+  event_definition: one
+  team_function: baixista
+  quantity: 1
+
+one_functions_teclado:
+  event_definition: one
+  team_function: tecladista
+  quantity: 1
+
+one_functions_vocal:
+  event_definition: one
+  team_function: vocal
+  quantity: 2
+
+one_functions_luzes:
+  event_definition: one
+  team_function: luzes
+  quantity: 1
+
+one_functions_camera:
+  event_definition: one
+  team_function: camera
+  quantity: 1
+
+one_functions_operador:
+  event_definition: one
+  team_function: camera
+  quantity: 1

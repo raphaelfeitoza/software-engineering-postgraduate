@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_definition: one
+  date: 2022-07-02 14:26:51
+
+two:
+  event_definition: two
+  date: 2022-07-02 14:26:51
