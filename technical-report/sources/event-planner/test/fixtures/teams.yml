@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+banda:
+  name: Banda
+
+som:
+  name: Som
+
+midia:
+  name: Mídia

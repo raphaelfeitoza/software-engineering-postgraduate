@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+batera_um:
+  team_function: bateria
+  user: raphael
+
+baixo_um:
+  team_function: baixista
+  user: julio
+
+baixo_dois:
+  team_function: baixista
+  user: rafael
+
+tecladista:
+  team_function: tecladista
+  user: lucas
+
+guitarrista:
+  team_function: guitarrista
+  user: daniel
+
+vocal:
+  team_function: vocal
+  user: gui
+
+vocal_dois:
+  team_function: vocal
+  user: isa
+
+luzes:
+  team_function: luzes
+  user: alysson
+
+camera:
+  team_function: camera
+  user: camera_um
+
+operador_pa:
+  team_function: operador
+  user: ale

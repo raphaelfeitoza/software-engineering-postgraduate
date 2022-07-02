@@ -1,0 +1,72 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+raphael:
+  username: raphael
+  password: raphael_
+  first_name: Raphael
+  last_name: Das Batera
+  phone_number: 558588888888
+  email: raphael@email.com
+
+julio:
+  username: julio
+  password: julio_
+  first_name: Julio
+  last_name: Do Baixo
+  email: julho_do_baixo@email.com
+
+rafael:
+  username: rafael
+  password: groove
+  first_name: Rafael
+  last_name: Dos Grooves
+  email: rafa_groovador@email.com
+
+lucas:
+  username: lucax
+  password: lucaxxx
+  first_name: Lucas
+  last_name: Dos teclados
+  email: lucax_dos_teclados@email.com
+
+ale:
+  username: alexandre
+  password: ale_do_som
+  first_name: Alexandre
+  last_name: Do Som
+  email: ale_do_som@email.com
+
+daniel:
+  username: daniel
+  password: daniel_mestre_das_cordas
+  first_name: Daniel
+  last_name: Mestre das Cordas
+  email: daniel_mestre_das_cordas@email.com
+
+gui:
+  username: gui
+  password: gui_da_voz
+  first_name: Guilherme
+  last_name: Mestre da voz
+  email: gui_da_voz@email.com
+
+isa:
+  username: isa
+  password: isa_da_voz
+  first_name: Isabela
+  last_name: Mestra da voz
+  email: isa_da_voz@email.com
+
+alysson:
+  username: alysson
+  password: alysson_da_luz
+  first_name: Alysson
+  last_name: Cabra da Luz
+  email: cabra_da_luz@email.com
+
+camera_um:
+  username: camera_um
+  password: camera_acao
+  first_name: Camera
+  last_name: Meste das cameras
+  email: mestre_das_cameras@email.com

@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+bateria:
+  name: Baterista
+  team: banda
+
+baixista:
+  name: Baixista
+  team: banda
+
+tecladista:
+  name: Tecladista
+  team: banda
+
+guitarrista:
+  name: Guitarrista
+  team: banda
+
+vocal:
+  name: Vocal
+  team: banda
+
+luzes:
+  name: "Operador de Iluminação"
+  team: midia
+
+camera:
+  name: "Operador das Cameras"
+  team: midia
+
+operador:
+  name: "Operador do PA"
+  team: som
