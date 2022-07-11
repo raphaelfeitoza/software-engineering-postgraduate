@@ -13,5 +13,11 @@ module Types
     def ping
       'Pong!'
     end
+
+    field :event_definitions, [EventDefinitionType], null: false
+
+    def event_definitions
+      EventDefinition.all
+    end
   end
 end
