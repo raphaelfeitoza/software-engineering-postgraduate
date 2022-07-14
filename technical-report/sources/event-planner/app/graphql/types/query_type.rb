@@ -40,16 +40,16 @@ module Types
       team_function_ids = []
 
       if team_id.present?
-        if function_id.present?
-          team_function_ids = EventFunctionDefinition.joins(:team_function)
+        team_function_ids = if function_id.present?
+                              EventFunctionDefinition.joins(:team_function)
                                                      .where(team_function: { team_id: team_id,
                                                                              id: function_id })
                                                      .pluck(:team_function_id)
-        else
-          team_function_ids = EventFunctionDefinition.joins(:team_function)
+                            else
+                              EventFunctionDefinition.joins(:team_function)
                                                      .where(team_function: { team_id: team_id })
                                                      .pluck(:team_function_id)
-        end
+                            end
       elsif function_id.present?
         team_function_ids = EventFunctionDefinition.joins(:team_function)
                                                    .where(team_function: { id: function_id })

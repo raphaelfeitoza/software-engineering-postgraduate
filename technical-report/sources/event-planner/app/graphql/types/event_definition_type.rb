@@ -14,8 +14,10 @@ module Types
     def teams
       team_functions = object.event_function_definition.group_by { |function| function.team_function.team }
       team_functions.map do |team_function, functions|
-        OpenStruct.new(id: team_function.id, name: team_function.name, functions: functions)
+        TeamFunctionData.new(id: team_function.id, name: team_function.name, functions: functions)
       end
     end
+
+    TeamFunctionData = Struct.new(:id, :name, :functions)
   end
 end
