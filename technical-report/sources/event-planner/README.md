@@ -6,7 +6,10 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
+    3.1.2
+```bash
+    chruby 3.1.2
+```
 * System dependencies
 
 * Configuration
@@ -14,6 +17,11 @@ Things you may want to cover:
 * Database creation
 
 * Database initialization
+```bash
+# on sources
+podman machine start 
+podman-compose up
+```
 
 * How to run the test suite
 
