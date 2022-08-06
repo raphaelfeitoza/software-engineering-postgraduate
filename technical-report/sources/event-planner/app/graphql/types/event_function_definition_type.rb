@@ -7,7 +7,7 @@ module Types
     field :name, String, null: false
 
     def name
-      object.team_function.name
+      object.function.name
     end
   end
 end

@@ -2,13 +2,8 @@
 
 module Types
   class QueryType < Types::BaseObject
-    # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
-
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
     field :ping, String, null: false
     def ping
       'Pong!'
@@ -30,36 +25,11 @@ module Types
     end
 
     field :users_by_event_definition, [TeamUserFunctionType],
+          resolver: Resolvers::UsersByEventDefinitionResolver,
           description: 'Fetch users that could be assigned to functions on an event' do
-      argument :event_definition_id, String, required: true
+      argument :event_definition_id, String, required: true, validates: { allow_blank: false }
       argument :team_id, String, required: false
       argument :function_id, String, required: false
-    end
-
-    def users_by_event_definition(event_definition_id:, team_id: nil, function_id: nil)
-      team_function_ids = []
-
-      if team_id.present?
-        team_function_ids = if function_id.present?
-                              EventFunctionDefinition.joins(:team_function)
-                                                     .where(team_function: { team_id: team_id,
-                                                                             id: function_id })
-                                                     .pluck(:team_function_id)
-                            else
-                              EventFunctionDefinition.joins(:team_function)
-                                                     .where(team_function: { team_id: team_id })
-                                                     .pluck(:team_function_id)
-                            end
-      elsif function_id.present?
-        team_function_ids = EventFunctionDefinition.joins(:team_function)
-                                                   .where(team_function: { id: function_id })
-                                                   .pluck(:team_function_id)
-      else
-        EventFunctionDefinition.where(event_definition_id: event_definition_id)
-                               .pluck(:team_function_id)
-      end
-
-      TeamUserFunction.where(team_function_id: team_function_ids)
     end
 
     field :scheduled_event_users, [ScheduledEventUserType],
