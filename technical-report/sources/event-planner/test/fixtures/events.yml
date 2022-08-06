@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  event_definition: one
+evento_completo_2_julho:
+  event_definition: evento_completo
   date: 2022-07-02 14:26:51
 
-two:
-  event_definition: two
-  date: 2022-07-02 14:26:51
+evento_sem_iluminacao_2_julho:
+  event_definition: evento_sem_iluminacao
+  date: 2022-07-03 14:26:51

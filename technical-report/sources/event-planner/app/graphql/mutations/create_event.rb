@@ -2,12 +2,11 @@
 
 module Mutations
   class CreateEvent < BaseMutation
-    
     field :event_id, ID, null: true
     field :event_definition, Types::EventDefinitionType, null: true
     field :user_errors, [Types::UserErrorType], null: true,
                                                 description: 'List of errors that occurred while executing the mutation.'
-    
+
     # TODO: define arguments
     argument :event_date, GraphQL::Types::ISO8601DateTime, required: true
     argument :event_definition_id, ID, required: true
@@ -18,7 +17,8 @@ module Mutations
 
       if scheduled_event.present?
         return {
-          user_errors: [Types::UserErrorType::Data.new(:event_date.to_s.camelize(:lower), "There's already an event on that date. Scheduled Event Id:#{scheduled_event.id}")]
+          user_errors: [Types::UserErrorType::Data.new(:event_date.to_s.camelize(:lower),
+                                                       "There's already an event on that date. Scheduled Event Id:#{scheduled_event.id}")]
         }
       end
 

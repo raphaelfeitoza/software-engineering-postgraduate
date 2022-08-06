@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+evento_completo:
   name: Evento Completo
   description: "Evento com banda, som e iluminacao"
 
-two:
+evento_sem_iluminacao:
   name: Evento sem iluminacao
   description: "Evento somento com banda e som"

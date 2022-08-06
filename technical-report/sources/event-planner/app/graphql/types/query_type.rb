@@ -61,5 +61,12 @@ module Types
 
       TeamUserFunction.where(team_function_id: team_function_ids)
     end
+
+    field :scheduled_event_users, [ScheduledEventUserType],
+          description: 'Fetch scheduled events by user' do
+      argument :user_id, String, required: true
+    end
+
+    def scheduled_event_users(user_id:); end
   end
 end
