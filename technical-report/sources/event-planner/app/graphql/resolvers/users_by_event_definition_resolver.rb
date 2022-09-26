@@ -22,8 +22,9 @@ module Resolvers
         end
       elsif function_id.present?
         team_function_ids_by_function_id(function_id: function_id)
+      else
+        team_function_ids_by_event_definition_id(event_definition_id: event_definition_id)
       end
-      team_function_ids_by_event_definition_id(event_definition_id: event_definition_id)
     end
 
     def team_function_ids_by_team_function_id(team_id:, function_id:)
