@@ -35,3 +35,6 @@ rails-default.zip
 
 # Ignore master key for decrypting credentials and more.
 /technical-report/sources/event-planner//config/master.key
+
+#ignore MAC hidden file
+.DS_Store
