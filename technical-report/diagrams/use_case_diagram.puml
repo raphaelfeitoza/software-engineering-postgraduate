@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+actor "Organizador do evento" as organizador
+actor "Líder de equipe" as lider
+actor "Membros de equipe" as membro
+actor "Sistema" as sistema
+
+rectangle "Gerenciamento de Equipes" {
+  usecase "Manter equipes" as manter_equipes
+  usecase "Manter funções de equipe" as manter_funcoes_equipe
+  usecase "Manter membros" as manter_membros
+}
+
+rectangle "Gerenciamento de eventos" {
+  usecase "Manter modelos de eventos" as manter_modelos_evento
+  usecase "Criar eventos" as criar_eventos
+  usecase "Manter escalas" as manter_escalas
+  usecase "Visualizar escalaçāo" as visualizar_escalas
+  usecase "Responder escalaçāo" as responder_escalas
+  usecase "Enviar notificações" as enviar_notificacoes
+}
+
+organizador --> manter_equipes
+organizador -> manter_funcoes_equipe
+organizador --> manter_modelos_evento
+organizador --> criar_eventos
+
+lider --> manter_funcoes_equipe
+lider --> manter_membros
+lider --> manter_escalas
+
+membro --> visualizar_escalas
+membro --> responder_escalas
+
+sistema --> enviar_notificacoes
+
+@enduml

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_08_165647) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_06_172203) do
   create_table "event_definitions", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_165647) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "end_date"
     t.index ["event_definition_id"], name: "index_events_on_event_definition_id"
   end
 

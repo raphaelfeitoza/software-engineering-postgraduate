@@ -152,10 +152,12 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.7)
-    puma (5.6.4)
+    puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.3)
@@ -184,7 +186,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    rake (13.0.6)
+    rake (13.0.3)
     regexp_parser (2.4.0)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -244,7 +246,8 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   pry-byebug
   pry-rails
-  puma (~> 5.0)
+  puma (~> 5.6.5)
+  rack-cors
   rails (~> 7.0.3)
   selenium-webdriver
   sprockets-rails
@@ -255,7 +258,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.0.4p208
 
 BUNDLED WITH
-   2.3.17
+   2.2.33
