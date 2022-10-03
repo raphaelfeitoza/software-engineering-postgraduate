@@ -19,3 +19,5 @@ AllCops:
     - 'app/controllers/graphql_controller.rb'
 Style/Documentation:
   Enabled: false
+Metrics/MethodLength:
+  Max: 20
