@@ -39,3 +39,39 @@ one_functions_operador:
   event_definition: evento_completo
   function: camera
   quantity: 1
+
+
+one_functions_bateria_event_2:
+  event_definition: evento_sem_iluminacao
+  function: bateria
+  quantity: 1
+
+one_functions_guitarra_2:
+  event_definition: evento_sem_iluminacao
+  function: guitarrista
+  quantity: 1
+
+one_functions_baixo_2:
+  event_definition: evento_sem_iluminacao
+  function: baixista
+  quantity: 1
+
+one_functions_teclado_2:
+  event_definition: evento_sem_iluminacao
+  function: tecladista
+  quantity: 1
+
+one_functions_vocal_2:
+  event_definition: evento_sem_iluminacao
+  function: vocal
+  quantity: 1
+
+one_functions_camera_2:
+  event_definition: evento_sem_iluminacao
+  function: camera
+  quantity: 1
+
+one_functions_operador_2:
+  event_definition: evento_sem_iluminacao
+  function: camera
+  quantity: 1

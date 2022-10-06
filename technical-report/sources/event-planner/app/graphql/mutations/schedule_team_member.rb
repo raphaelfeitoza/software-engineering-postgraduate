@@ -2,13 +2,11 @@
 
 module Mutations
   class ScheduleTeamMember < BaseMutation
-    # '{"data":{"attributes":{"team_id":4284355,"team_position_name":"Drums","people_ids":["85737148"]}}}' \
-
     field :user_errors, [Types::UserErrorType],
           null: false,
           description: 'List of errors that occurred while executing the mutation.'
 
-    argument :event_id, String, required: true
+    argument :event_id, ID, required: true
     argument :user_functions, [Types::UserFunctionInputType], required: true
 
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
@@ -31,6 +29,7 @@ module Mutations
         if user.nil?
           user_errors << Types::UserErrorType::Data.new(:user_id.to_s.camelize(:lower),
                                                         "User: #{user_function.user_id} not found")
+          next
         end
 
         function = EventFunctionDefinition.where(
@@ -41,6 +40,7 @@ module Mutations
         if function.nil?
           user_errors << Types::UserErrorType::Data.new(:function_id.to_s.camelize(:lower),
                                                         "Function: #{user_function.function_id} not found")
+          next
         end
 
         EventScheduledUser.find_or_create_by(event_id: event.id,

@@ -9,5 +9,11 @@ module Types
     def name
       object.function.name
     end
+
+    field :function_id, ID, null: false
+
+    def function_id
+      object.function.id
+    end
   end
 end

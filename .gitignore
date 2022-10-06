@@ -21,7 +21,7 @@ rails-default.zip
 
 # Ignore pidfiles, but keep the directory.
 /technical-report/sources/event-planner//tmp/pids/*
-!/technical-report/sources/event-planner//tmp/pids/
+!/technical-report/sources/event-planner//tmp/pids
 !/technical-report/sources/event-planner//tmp/pids/.keep
 
 # Ignore uploaded files in development.
@@ -38,3 +38,5 @@ rails-default.zip
 
 #ignore MAC hidden file
 .DS_Store
+technical-report/sources/front-end.zip
+technical-report/sources/rails-app.zip
