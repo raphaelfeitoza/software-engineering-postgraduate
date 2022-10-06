@@ -1,9 +1,11 @@
 import React from "react";
 import { EventList } from "../components/EventList";
+import { EventListFilters } from "../components/EventListFilters";
 
 export function EventListPage() {
     return (
         <div className="container">
+            <EventListFilters></EventListFilters>
             <EventList events={defaultEvents} ></EventList>
         </div>
     );
