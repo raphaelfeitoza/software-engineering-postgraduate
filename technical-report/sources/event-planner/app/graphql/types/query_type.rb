@@ -44,11 +44,14 @@ module Types
       argument :event_type, ID, required: false
       argument :start_date, GraphQL::Types::ISO8601DateTime, required: false
       argument :end_date, GraphQL::Types::ISO8601DateTime, required: false
-      argument :user_id, String, required: false
+      argument :user_id, ID, required: false
     end
 
     def scheduled_events(event_type: nil, start_date: nil, end_date: nil, user_id: nil)
-      Event.all
+      events = Event.all
+      events = events.where(event_definition_id: event_type) if event_type.present?
+
+      events
     end
   end
 end
