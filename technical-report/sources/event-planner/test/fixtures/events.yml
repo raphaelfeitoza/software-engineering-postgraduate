@@ -3,7 +3,9 @@
 evento_completo_2_julho:
   event_definition: evento_completo
   date: 2022-07-02 14:26:51
+  end_date: 2022-07-02 16:26:51
 
 evento_sem_iluminacao_2_julho:
   event_definition: evento_sem_iluminacao
-  date: 2022-07-03 14:26:51
+  date: 2022-07-03 14:00:00
+  date: 2022-07-03 20:00:00

@@ -38,5 +38,17 @@ module Types
     end
 
     def scheduled_event_users(user_id:); end
+
+    field :scheduled_events, [ScheduledEventType],
+          description: 'Fetch scheduled events' do
+      argument :event_type, ID, required: false
+      argument :start_date, GraphQL::Types::ISO8601DateTime, required: false
+      argument :end_date, GraphQL::Types::ISO8601DateTime, required: false
+      argument :user_id, String, required: false
+    end
+
+    def scheduled_events(event_type: nil, start_date: nil, end_date: nil, user_id: nil)
+      Event.all
+    end
   end
 end
