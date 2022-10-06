@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import DatePicker from 'react-date-picker';
 import { EventListPage } from './sections/EvenListPage';
 
 function App() {

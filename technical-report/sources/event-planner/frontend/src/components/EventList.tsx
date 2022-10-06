@@ -1,17 +1,11 @@
 import React, { ReactElement } from "react";
-import { JsxElement } from "typescript";
+import {EventListItem} from '../GraphqlTypes';
 
 interface EventListProps {
     events: EventListItem[];
 }
 
-interface EventListItem {
-    id: string;
-    eventType: string;
-    date: Date;
-}
-
-export function EventList({ events }: EventListProps) :ReactElement {
+export function EventList({ events }: EventListProps): ReactElement {
 
     if (events.length === 0) {
         return (
@@ -36,12 +30,15 @@ export function EventList({ events }: EventListProps) :ReactElement {
                     <tbody>
                         {
                             events.map((element) => (
-                                <tr>
+                                <tr key={element.id}>
                                     <td>{element.eventType}</td>
                                     <td>{element.date.toLocaleTimeString()}</td>
-                                    <button className="btn btn-outline-secondary">
+                                    <td>
+
+                                    <button className="btn btn-outline-secondary" onClick={()=>alert('clicou')}>
                                         <i className="bi bi-calendar-event"></i> Ver Escala
                                     </button>
+                                    </td>
                                 </tr>
 
                             ))
