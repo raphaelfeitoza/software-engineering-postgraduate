@@ -1,13 +1,14 @@
 import React, { ReactElement } from "react";
-import {EventListItem} from '../GraphqlTypes';
+import {EventListData} from '../GraphqlTypes';
 
 interface EventListProps {
-    events: EventListItem[];
+    loading:boolean;
+    events?: EventListData | undefined;
 }
 
-export function EventList({ events }: EventListProps): ReactElement {
+export function EventList({ loading, events }: EventListProps): ReactElement {
 
-    if (events.length === 0) {
+    if (!events?.scheduledEvents || events.scheduledEvents?.length === 0) {
         return (
             <div className="card">
                 <div className="card-body">
@@ -18,24 +19,25 @@ export function EventList({ events }: EventListProps): ReactElement {
     }
 
     return (
-        <div className="row">
-            <div className='col-6'>
+        <div className="row mt-5">
+            <div className='col-10'>
                 <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">Tipo de evento</th>
                             <th scope="col">Data</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            events.map((element) => (
+                            events.scheduledEvents?.map((element) => (
                                 <tr key={element.id}>
-                                    <td>{element.eventType}</td>
-                                    <td>{element.date.toLocaleTimeString()}</td>
+                                    <td>{element.event?.name}</td>
+                                    <td>{element.date.toString()}</td>
                                     <td>
 
-                                    <button className="btn btn-outline-secondary" onClick={()=>alert('clicou')}>
+                                    <button id="scheduleEvent" className="btn btn-secondary" onClick={()=>alert('clicou')}>
                                         <i className="bi bi-calendar-event"></i> Ver Escala
                                     </button>
                                     </td>

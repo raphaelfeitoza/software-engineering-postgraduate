@@ -6,6 +6,12 @@ export interface EventDefinition {
 
 export interface EventListItem {
     id: string;
-    eventType: string;
+    eventType?: string;
     date: Date;
+    event?: EventDefinition;
+}
+
+
+export interface EventListData{
+    scheduledEvents?: EventListItem[]
 }

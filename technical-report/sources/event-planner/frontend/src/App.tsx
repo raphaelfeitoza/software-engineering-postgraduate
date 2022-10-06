@@ -28,7 +28,7 @@ function App() {
         </div>
       </header>
 
-      <div className="container text-center">
+      <div className="container">
         <div className="row">
           <div className="col">
           </div>
