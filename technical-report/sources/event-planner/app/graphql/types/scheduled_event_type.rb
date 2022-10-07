@@ -10,6 +10,5 @@ module Types
     def event
       object.event_definition
     end
-    
   end
 end

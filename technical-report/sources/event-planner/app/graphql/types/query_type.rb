@@ -15,8 +15,8 @@ module Types
       EventDefinition.all
     end
 
-    field :event_definition, EventDefinitionType, null: true,
-                                                  description: 'Fetch an event definition by id' do
+    field :event_definition, EventDefinitionType,
+          null: true, description: 'Fetch an event definition by id' do
       argument :id, String, required: true
     end
 
@@ -32,13 +32,6 @@ module Types
       argument :function_id, String, required: false
     end
 
-    field :scheduled_event_users, [ScheduledEventUserType],
-          description: 'Fetch scheduled events by user' do
-      argument :user_id, String, required: true
-    end
-
-    def scheduled_event_users(user_id:); end
-
     field :scheduled_events, [ScheduledEventType],
           description: 'Fetch scheduled events' do
       argument :event_type, ID, required: false
@@ -50,7 +43,9 @@ module Types
     def scheduled_events(event_type: nil, start_date: nil, end_date: nil, user_id: nil)
       events = Event.all
       events = events.where(event_definition_id: event_type) if event_type.present?
-
+      events = events.where("date >= :start_date", {start_date: start_date}) if start_date.present?
+      events = events.where("end_date <= :end_date", {end_date: end_date}) if end_date.present?
+      events = events.joins(:scheduled_users).where(scheduled_users: { user_id: user_id }) if user_id.present?
       events
     end
   end
