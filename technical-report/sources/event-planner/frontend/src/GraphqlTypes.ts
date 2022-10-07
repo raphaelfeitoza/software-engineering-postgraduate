@@ -15,3 +15,15 @@ export interface EventListItem {
 export interface EventListData{
     scheduledEvents?: EventListItem[]
 }
+
+
+export interface CreateEventData{
+    eventId: string, 
+    eventDefinition: EventDefinition,
+    userErrors: UserError[]
+}
+
+export interface UserError{
+    field:string, 
+    message:string,
+}

@@ -3,7 +3,6 @@ import { EventList } from "../components/EventList";
 import { EventListFilters, SelectedFilters } from "../components/EventListFilters";
 import { useQuery, gql } from '@apollo/client';
 import { EventListData } from "../GraphqlTypes";
-import Moment from 'moment-mini'
 import { PageHeader } from "../components/PageHeader";
 
 
@@ -20,7 +19,7 @@ query scheduledEvents($eventType: ID, $startDate:ISO8601DateTime, $endDate:ISO86
         endDate
         event
         {
-        name
+          name
         }
     }
 }`;

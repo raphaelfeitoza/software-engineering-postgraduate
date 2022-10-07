@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {EventTypeSelect} from './EventTypeSelect'
+import {DateToString} from '../functions'
 
 export interface SelectedFilters {
     eventType?: string,
@@ -10,15 +11,6 @@ export interface SelectedFilters {
 interface EventListProps {
     filters: SelectedFilters;
     handleSelected: (filters: SelectedFilters) => void;
-}
-
-function DateToString(date?: Date) {
-    if (!date) return "";
-    return date.getUTCFullYear() + "-" +
-        ("0" + (date.getUTCMonth() + 1)).slice(-2) + "-" +
-        ("0" + date.getUTCDate()).slice(-2) + "T" +
-        ("0" + date.getUTCHours()).slice(-2) + ":" +
-        ("0" + date.getUTCMinutes()).slice(-2);
 }
 
 export function EventListFilters({ handleSelected, filters }: EventListProps) {
