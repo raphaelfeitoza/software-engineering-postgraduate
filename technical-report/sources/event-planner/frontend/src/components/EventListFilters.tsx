@@ -1,57 +1,15 @@
 import React, { useState } from "react";
-import { useQuery, gql } from '@apollo/client';
-import { EventDefinition } from '../GraphqlTypes';
-const GET_EVENT_DEFINITIONS = gql`
-query {
-    eventDefinitions
-    {
-        id
-        name
-        description
-    }
-}`;
+import {EventTypeSelect} from './EventTypeSelect'
 
 export interface SelectedFilters {
     eventType?: string,
     startDate: Date;
     endDate?: Date;
-
 }
 
 interface EventListProps {
     filters: SelectedFilters;
     handleSelected: (filters: SelectedFilters) => void;
-}
-
-interface SetValueProp {
-    handleChange: (value: string) => void;
-}
-
-function BuildEventTypeSelect({ handleChange }: SetValueProp) {
-    const { loading, error, data } = useQuery(GET_EVENT_DEFINITIONS);
-
-    if (loading) return (
-        <select className="form-select" defaultValue="">
-            <option key="" value="">Selecione o tipo de Evento (Carregando...)</option>
-        </select>
-    );
-
-    if (error) {
-        console.log(error)
-        return <p>Error :(</p>;
-    }
-
-
-    return (
-        <select className="form-select" defaultValue="" onChange={(e) => handleChange(e.target.value)}>
-            <option key="" value="">Selecione o tipo de Evento</option>
-            {
-                data.eventDefinitions.map((element: EventDefinition) => (
-                    <option key={element.id} value={element.id}>{element.name} - {element.description}</option>
-                ))
-            }
-        </select>
-    )
 }
 
 function DateToString(date?: Date) {
@@ -61,10 +19,7 @@ function DateToString(date?: Date) {
         ("0" + date.getUTCDate()).slice(-2) + "T" +
         ("0" + date.getUTCHours()).slice(-2) + ":" +
         ("0" + date.getUTCMinutes()).slice(-2);
-        // ":" +
-        // ("0" + date.getUTCSeconds()).slice(-2);
 }
-
 
 export function EventListFilters({ handleSelected, filters }: EventListProps) {
 
@@ -77,7 +32,7 @@ export function EventListFilters({ handleSelected, filters }: EventListProps) {
                         <label className="col-form-label">Tipo de Evento:</label>
                     </div>
                     <div className="col">
-                        <BuildEventTypeSelect handleChange={(selectedEvent) => {
+                        <EventTypeSelect handleChange={(selectedEvent) => {
                             setFilters(
                                 {
                                     ...filter,

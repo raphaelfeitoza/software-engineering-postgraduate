@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { EventListPage } from './sections/EvenListPage';
+import { CreateEventPage } from './sections/CreateEventPage';
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
           <div className="col">
           </div>
           <div className="col-10 mt-5">
-            <EventListPage></EventListPage>
+            {/* <EventListPage /> */}
+            <CreateEventPage />
           </div>
           <div className="col">
           </div>
