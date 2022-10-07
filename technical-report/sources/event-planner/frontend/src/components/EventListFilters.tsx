@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useQuery, gql } from '@apollo/client';
 import { EventDefinition } from '../GraphqlTypes';
-import Moment from 'moment-mini'
 const GET_EVENT_DEFINITIONS = gql`
 query {
     eventDefinitions
@@ -20,6 +19,7 @@ export interface SelectedFilters {
 }
 
 interface EventListProps {
+    filters: SelectedFilters;
     handleSelected: (filters: SelectedFilters) => void;
 }
 
@@ -60,21 +60,18 @@ function DateToString(date?: Date) {
         ("0" + (date.getUTCMonth() + 1)).slice(-2) + "-" +
         ("0" + date.getUTCDate()).slice(-2) + "T" +
         ("0" + date.getUTCHours()).slice(-2) + ":" +
-        ("0" + date.getUTCMinutes()).slice(-2) + ":" +
-        ("0" + date.getUTCSeconds()).slice(-2);
+        ("0" + date.getUTCMinutes()).slice(-2);
+        // ":" +
+        // ("0" + date.getUTCSeconds()).slice(-2);
 }
 
 
-export function EventListFilters({ handleSelected }: EventListProps) {
+export function EventListFilters({ handleSelected, filters }: EventListProps) {
 
-    const initialState: SelectedFilters = {
-        eventType: "",
-        startDate: new Date()
-    };
-    const [filters, setFilters] = useState(initialState);
+    const [filter, setFilters] = useState(filters);
     return (
         <>
-            <div className="col text-start col-8">
+            <div className="col text-start col-8 mt-5">
                 <div className="row">
                     <div className="col col-3">
                         <label className="col-form-label">Tipo de Evento:</label>
@@ -83,7 +80,7 @@ export function EventListFilters({ handleSelected }: EventListProps) {
                         <BuildEventTypeSelect handleChange={(selectedEvent) => {
                             setFilters(
                                 {
-                                    ...filters,
+                                    ...filter,
                                     eventType: selectedEvent,
                                 }
                             )
@@ -97,9 +94,9 @@ export function EventListFilters({ handleSelected }: EventListProps) {
                     <div className="col">
                         <div className="input-group input-group-sm">
                             <div className="form-floating ">
-                                <input type="datetime-local" className="form-control" id="startDate" value={DateToString(filters.startDate)} onChange={(e) => {
+                                <input type="datetime-local" className="form-control" id="startDate" value={DateToString(filter.startDate)} onChange={(e) => {
                                     setFilters({
-                                        ...filters,
+                                        ...filter,
                                         startDate: new Date(e.target.value)
 
                                     })
@@ -107,9 +104,9 @@ export function EventListFilters({ handleSelected }: EventListProps) {
                                 <label>Data inicial</label>
                             </div>
                             <div className="form-floating">
-                                <input type="datetime-local" className="form-control" id="endDate" value={DateToString(filters.endDate)} onChange={(e) => {
+                                <input type="datetime-local" className="form-control" id="endDate" value={DateToString(filter.endDate)} onChange={(e) => {
                                     setFilters({
-                                        ...filters,
+                                        ...filter,
                                         endDate: e.target.value ? new Date(e.target.value) : undefined
 
                                     })
@@ -119,7 +116,7 @@ export function EventListFilters({ handleSelected }: EventListProps) {
                         </div>
                     </div>
                 </div>
-                <button id="applyFilters" type="button" className="btn btn-primary" onClick={() => handleSelected(filters)}>Filtrar</button>
+                <button id="applyFilters" type="button" className="btn btn-primary" onClick={() => handleSelected(filter)}>Filtrar</button>
             </div>
         </>
     );

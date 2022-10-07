@@ -1,18 +1,28 @@
-import React, { ReactElement } from "react";
-import {EventListData} from '../GraphqlTypes';
+import { EventListData } from '../GraphqlTypes';
 
 interface EventListProps {
-    loading:boolean;
+    loading: boolean;
     events?: EventListData | undefined;
 }
 
-export function EventList({ loading, events }: EventListProps): ReactElement {
+export function EventList({ loading, events }: EventListProps) {
+
+    if (loading) {
+        return (
+            <div className="card mt-5 col-10">
+                <div className="card-body">
+                    Buscando eventos... 
+                </div>
+            </div>
+        );
+    }
+
 
     if (!events?.scheduledEvents || events.scheduledEvents?.length === 0) {
         return (
-            <div className="card">
+            <div className="card mt-5 col-10">
                 <div className="card-body">
-                    Empty State.
+                    Nenhum evento encontrado com esses filtros.
                 </div>
             </div>
         )
@@ -37,9 +47,9 @@ export function EventList({ loading, events }: EventListProps): ReactElement {
                                     <td>{element.date.toString()}</td>
                                     <td>
 
-                                    <button id="scheduleEvent" className="btn btn-secondary" onClick={()=>alert('clicou')}>
-                                        <i className="bi bi-calendar-event"></i> Ver Escala
-                                    </button>
+                                        <button id="scheduleEvent" className="btn btn-secondary" onClick={() => alert('clicou')}>
+                                            <i className="bi bi-calendar-event"></i> Ver Escala
+                                        </button>
                                     </td>
                                 </tr>
 
