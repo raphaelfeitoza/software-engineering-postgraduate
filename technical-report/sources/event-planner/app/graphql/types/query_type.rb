@@ -43,8 +43,8 @@ module Types
     def scheduled_events(event_type: nil, start_date: nil, end_date: nil, user_id: nil)
       events = Event.all
       events = events.where(event_definition_id: event_type) if event_type.present?
-      events = events.where("date >= :start_date", {start_date: start_date}) if start_date.present?
-      events = events.where("end_date <= :end_date", {end_date: end_date}) if end_date.present?
+      events = events.where('date >= :start_date', { start_date: start_date }) if start_date.present?
+      events = events.where('end_date <= :end_date', { end_date: end_date }) if end_date.present?
       events = events.joins(:scheduled_users).where(scheduled_users: { user_id: user_id }) if user_id.present?
       events
     end
