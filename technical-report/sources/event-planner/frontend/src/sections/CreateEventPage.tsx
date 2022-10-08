@@ -1,8 +1,9 @@
-import React, { Component, ReactElement, useState } from "react";
+import React, { useState } from "react";
 import { useMutation, gql } from '@apollo/client';
 import { PageHeader } from "../components/PageHeader";
 import { CreateEventForm, CreateEventParams } from "../components/CreateEvent";
 import { CreateEventData, UserError } from "../GraphqlTypes";
+import { NotificationPanel, NotificationPanelProps } from "../components/NotificationPanel";
 
 const SCHEDULE_EVENT = gql`
 mutation create_event($eventType: ID!, $startDate:ISO8601DateTime!, $endDate:ISO8601DateTime!){
@@ -64,39 +65,4 @@ export function CreateEventPage() {
             <NotificationPanel userErrors={notification?.userErrors} success={notification?.success} />
         </div>
     );
-}
-
-export function NotificationPanel({ userErrors, success }: NotificationPanelProps) {
-
-    if (success) {
-        return (
-            <div className="alert alert-success mt-5" role="alert">
-                {success}
-            </div>
-        )
-    }
-
-    if (userErrors && userErrors?.length > 0) {
-
-        return (
-            <div className="alert alert-warning mt-5" role="alert">
-                <ul className="list-group">
-                    {
-                        userErrors?.map((element) => (
-                            <li className="list-group-item" key={element.field}>{element.message}</li>
-                        ))
-                    }
-                </ul>
-            </div>
-        )
-    }
-
-    return (
-        <></>
-    )
-}
-
-interface NotificationPanelProps {
-    userErrors?: UserError[],
-    success?: any
 }

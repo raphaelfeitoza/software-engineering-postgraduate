@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { EventTypeSelect } from "./EventTypeSelect";
 import { DateToString } from '../functions'
+import { UserError } from "../GraphqlTypes";
+import { NotificationPanel, NotificationPanelProps } from "./NotificationPanel";
 
 export interface CreateEventParams {
     eventType?: string,
@@ -14,9 +16,26 @@ interface CreateEventFormProps {
 }
 
 
-
 export function CreateEventForm({ params, handleCreate }: CreateEventFormProps) {
+
+    function validateFormData(formData: CreateEventParams): UserError[] {
+        var userErrors: UserError[] = [];
+
+        if (!formData.eventType)
+            userErrors.push({ field: "eventType", message: "Selecione o tipo de evento" })
+
+        if (!formData.startDate)
+            userErrors.push({ field: "startDate", message: "Data e hora de início" })
+
+        if (!formData.endDate)
+            userErrors.push({ field: "endDate", message: "Data e hora de término" })
+
+        return userErrors;
+
+    }
+
     const [formData, setFormData] = useState(params);
+    const [notification, setNotification] = useState<NotificationPanelProps | undefined>(undefined);
     return (
         <>
             <div className="col text-start col-8 mt-5">
@@ -73,10 +92,23 @@ export function CreateEventForm({ params, handleCreate }: CreateEventFormProps) 
                         </div>
                     </div>
                 </div>
-                <button id="createEvent" type="button" className="btn btn-primary" onClick={() => handleCreate(formData)}>
+                <button id="createEvent" type="button" className="btn btn-primary" onClick={() => {
+
+                    let errors = validateFormData(formData);
+
+                    if (errors.length > 0) {
+                        setNotification({ userErrors: errors });
+                        return;
+                    }
+
+                    setNotification({ userErrors: undefined });
+                    handleCreate(formData)
+                }}>
                     Criar Evento
                 </button>
             </div>
+
+            <NotificationPanel userErrors={notification?.userErrors} success={undefined} />
         </>
     );
 }
