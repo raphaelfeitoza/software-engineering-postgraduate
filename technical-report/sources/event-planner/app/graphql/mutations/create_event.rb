@@ -33,6 +33,11 @@ module Mutations
 
       return [] unless scheduled_event.present?
 
+      if end_date <= start_date
+        return [Types::UserErrorType::Data.new(:start_date.to_s.camelize(:lower),
+                                               'The start date must be before the end date.')]
+      end
+
       [Types::UserErrorType::Data.new(:start_date.to_s.camelize(:lower),
                                       "There's already an event on that date. Event Id:#{scheduled_event.id}")]
     end

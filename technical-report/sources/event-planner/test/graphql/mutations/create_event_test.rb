@@ -17,7 +17,7 @@ module Types
       assert user_errors.first['message'].starts_with?("There's already an event on that date")
     end
 
-    test '#resolve event for the same date returns user errors' do
+    test '#resolve event with end date before start date returns user errors' do
       event_definition = event_definitions(:evento_completo)
       scheduled_event = Event.find_by(event_definition_id: event_definition.id)
       result = execute(create_event_mutation(start_date: scheduled_event.end_date,

@@ -12,7 +12,7 @@ module Types
 
     field :function_id, ID, null: false
 
-    def function_id 
+    def function_id
       object.function.id
     end
   end
