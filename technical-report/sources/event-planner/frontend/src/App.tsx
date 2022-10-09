@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { EventListPage } from './sections/EvenListPage';
 import { CreateEventPage } from './sections/CreateEventPage';
+import { EventDetail } from './components/EventDetail';
+import { ScheduleUsersPage } from './sections/ScheduleUsersPage';
 
 function App() {
   return (
@@ -35,7 +37,9 @@ function App() {
           </div>
           <div className="col-10 mt-5">
             {/* <EventListPage /> */}
-            <CreateEventPage />
+            {/* <CreateEventPage /> */}
+            {/* <EventDetail eventType='blah blah' startDate={new Date()} endDate={new Date()} ></EventDetail> */}
+            <ScheduleUsersPage eventId='619492196'/>
           </div>
           <div className="col">
           </div>
@@ -90,50 +94,5 @@ function ResponderEscalacao({ eventoId, tipoEvento, data }: ResponderEscalacaoPr
       </div>
 
     </form>
-  );
-}
-
-
-
-// -------------------
-
-function FazerEscalaForm() {
-  return (
-    <>
-      <div className="row">
-        <div className="col">
-          <label className="col-form-label">Tipo de Evento:</label>
-        </div>
-        <div className="col">
-          <select className="form-select" aria-label="Default select example">
-            <option selected>Selecione o tipo de Evento</option>
-            <option value="1">Evento Completo</option>
-            <option value="2">Evento sem midia</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col">
-          <label className="col-form-label">Data:</label>
-        </div>
-        <div className="col">
-          <select className="form-select" aria-label="Default select example">
-            <option selected>Selecione o data do evento</option>
-            <option value="1"></option>
-            <option value="2">Evento sem midia</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col">
-
-        </div>
-        <div className="col">
-
-        </div>
-      </div>
-    </>
   );
 }

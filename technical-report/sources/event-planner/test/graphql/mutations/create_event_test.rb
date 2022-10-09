@@ -16,7 +16,7 @@ module Types
       assert_equal user_errors.count, 1
       assert user_errors.first['message'].starts_with?("There's already an event on that date")
     end
-    
+
     test '#resolve event for the same date returns user errors' do
       event_definition = event_definitions(:evento_completo)
       scheduled_event = Event.find_by(event_definition_id: event_definition.id)
@@ -26,9 +26,8 @@ module Types
 
       user_errors = result['data']['createEvent']['userErrors']
       assert_equal user_errors.count, 1
-      assert user_errors.first['message'].starts_with?("The start date must be before the end date.")
+      assert user_errors.first['message'].starts_with?('The start date must be before the end date.')
     end
-
 
     [60.minutes, -60.minutes, 50.minutes]
       .each do |time_to_add|

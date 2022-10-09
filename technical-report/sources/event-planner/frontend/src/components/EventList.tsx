@@ -35,7 +35,8 @@ export function EventList({ loading, events }: EventListProps) {
                     <thead>
                         <tr>
                             <th scope="col">Tipo de evento</th>
-                            <th scope="col">Data</th>
+                            <th scope="col">Data de início</th>
+                            <th scope="col">Data de término</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -44,7 +45,8 @@ export function EventList({ loading, events }: EventListProps) {
                             events.scheduledEvents?.map((element) => (
                                 <tr key={element.id}>
                                     <td>{element.event?.name}</td>
-                                    <td>{element.date.toString()}</td>
+                                    <td>{new Date(element.date).toLocaleString()}</td>
+                                    <td>{new Date(element.endDate).toLocaleString()}</td>
                                     <td>
 
                                         <button id="scheduleEvent" className="btn btn-secondary" onClick={() => alert('clicou')}>
