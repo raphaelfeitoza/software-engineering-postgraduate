@@ -6,7 +6,7 @@ module Mutations
           null: false,
           description: 'List of errors that occurred while executing the mutation.'
 
-    argument :event_id, String, required: true
+    argument :event_id, ID, required: true
     argument :user_functions, [Types::UserFunctionInputType], required: true
 
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize

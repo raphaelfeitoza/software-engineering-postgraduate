@@ -34,8 +34,6 @@ export function CreateEventPage() {
     };
     const [formData, setFormData] = useState(initialState);
     const [mutateFunction, { data, loading, error }] = useMutation(SCHEDULE_EVENT);
-
-
     const [notification, setNotification] = useState<NotificationPanelProps | undefined>(undefined);
 
 
