@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useMutation, gql } from '@apollo/client';
-import { PageHeader } from "../components/PageHeader";
+import { PageHeader } from "../components/PageTitle";
 import { CreateEventForm, CreateEventParams } from "../components/CreateEvent";
 import { CreateEventData, UserError } from "../GraphqlTypes";
 import { NotificationPanel, NotificationPanelProps } from "../components/NotificationPanel";
+import { Menu } from "../components/Menu";
 
 const SCHEDULE_EVENT = gql`
 mutation create_event($eventType: ID!, $startDate:ISO8601DateTime!, $endDate:ISO8601DateTime!){
@@ -46,7 +47,7 @@ export function CreateEventPage() {
                 setNotification(
                     {
                         userErrors: eventData.userErrors,
-                        success: eventData.eventId? (<>
+                        success: eventData.eventId ? (<>
                             Evento criado com sucesso! <a href={"/schedule_event?eventId=" + eventData?.eventId}> Criar escalação</a>
                         </>) : undefined
                     }
@@ -57,10 +58,21 @@ export function CreateEventPage() {
     }
 
     return (
-        <div className="container">
-            <PageHeader header="Criar Evento" />
-            <CreateEventForm params={initialState} handleCreate={handleCreate} />
-            <NotificationPanel userErrors={notification?.userErrors} success={notification?.success} />
+        <div className="App">
+            <Menu />
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                    </div>
+                    <div className="col-10 mt-5">
+                        <PageHeader header="Criar Evento" />
+                        <CreateEventForm params={initialState} handleCreate={handleCreate} />
+                        <NotificationPanel userErrors={notification?.userErrors} success={notification?.success} />
+                    </div>
+                    <div className="col">
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

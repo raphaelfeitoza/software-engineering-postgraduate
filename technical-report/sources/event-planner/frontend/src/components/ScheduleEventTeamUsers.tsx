@@ -43,7 +43,7 @@ export function ScheduleEventTeamUsers({ loading, eventDefinition, handleSave }:
                                             <div className="col col-3">
                                                 <label className="col-form-label"> {func.name}</label>
                                             </div>
-                                            <div className="col">
+                                            <div className="col-5">
                                                 <UsersFunctionEventSelect eventDefinitionId={eventDefinition.id} teamId={team.id} functionId={func.functionId}
                                                     handleChange={(value) => {
                                                         if (value) {

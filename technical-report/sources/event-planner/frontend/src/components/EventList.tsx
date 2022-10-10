@@ -49,9 +49,11 @@ export function EventList({ loading, events }: EventListProps) {
                                     <td>{new Date(element.endDate).toLocaleString()}</td>
                                     <td>
 
-                                        <button id="scheduleEvent" className="btn btn-secondary" onClick={() => alert('clicou')}>
+                                    <a href= {"/events/" + element.id} className="btn btn-secondary">
                                             <i className="bi bi-calendar-event"></i> Ver Escala
-                                        </button>
+                                    </a>
+                                        {/* <button id="scheduleEvent" className="btn btn-secondary" onClick={() => alert('clicou')}>
+                                        </button> */}
                                     </td>
                                 </tr>
 
