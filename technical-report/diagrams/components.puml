@@ -4,14 +4,18 @@ left to right direction
 [Browser]
 cloud "Aws" {
 
-    [SPA Front-end]
-
-    [Rails - Graphql API]
-
-    database "RDS - MySql" {
-        [EventPlanner DB]
+    package "Aws S3\nConteúdo estático" {
+        [SPA Front-end]
     }
 
+    package "AWS Elastic Beanstalk"{
+        [Rails - Graphql API]
+     
+        database "RDS - MySql" {
+            [EventPlanner DB]
+        }
+    }
+    
     [AWS SNS]
 }
 
