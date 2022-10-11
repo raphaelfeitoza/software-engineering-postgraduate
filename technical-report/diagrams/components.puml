@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+[Browser]
+cloud "Aws" {
+
+    [SPA Front-end]
+
+    [Rails - Graphql API]
+
+    database "RDS - MySql" {
+        [EventPlanner DB]
+    }
+
+    [AWS SNS]
+}
+
+[Browser] --> [SPA Front-end] :Http/Https
+[SPA Front-end] --> [Rails - Graphql API] : Graphql/Http
+[Rails - Graphql API] --> [EventPlanner DB]
+[Rails - Graphql API] -->  [AWS SNS]
+@enduml
