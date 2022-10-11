@@ -19,12 +19,25 @@ export function Menu() {
                 <a className="nav-link active" aria-current="page" href="/">Início</a>
               </li>
               <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Equipes
+                </a>
+                <ul className="dropdown-menu">
+                  <li><a className="dropdown-item disabled" href="#">Manter equipes</a></li>
+                  <li><a className="dropdown-item disabled" href="#">Manter funções de equipe </a></li>
+                  <li><a className="dropdown-item disabled" href="#">Manter funções de equipe </a></li>
+                </ul>
+              </li>
+              <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="/events" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Eventos
                 </a>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="/events">Eventos Planejados</a></li>
-                  <li><a className="dropdown-item" href="/new-event">Criar Evento</a></li>
+                  <li><a className="dropdown-item" href="/new-event">Criar Eventos</a></li>
+                  <li><a className="dropdown-item disabled" href="#">Manter modelos de eventos</a></li>
+                  <li><a className="dropdown-item disabled" href="#">Visualiar escalação</a></li>
+
                 </ul>
               </li>
             </ul>

@@ -11,20 +11,19 @@ rectangle "Gerenciamento de Equipes" {
   usecase "Manter membros" as manter_membros
 }
 
-rectangle "Criaçāo de eventos" {
+rectangle "Gerenciamento de eventos" {
   usecase "Manter modelos de eventos" as manter_modelos_evento
-  usecase "Manter eventos" as manter_eventos
+  usecase "Criar eventos" as criar_eventos
   usecase "Manter escalas" as manter_escalas
   usecase "Visualizar escalaçāo" as visualizar_escalas
   usecase "Responder escalaçāo" as responder_escalas
   usecase "Enviar notificações" as enviar_notificacoes
-
 }
 
 organizador --> manter_equipes
 organizador -> manter_funcoes_equipe
 organizador --> manter_modelos_evento
-organizador --> manter_eventos
+organizador --> criar_eventos
 
 lider --> manter_funcoes_equipe
 lider --> manter_membros
