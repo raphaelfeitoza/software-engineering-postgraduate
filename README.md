@@ -9,8 +9,8 @@ O objetivo deste trabalho é apresentar a descrição do projeto arquitetural de
 
 A [technical-report](/technical-report/) contém todos os artefatos implementados: 
 
- - Pasta [diagrams](/technical-report/diagrams/) : códico fonte dos diagramas do projeto
+ - Pasta [diagrams](/technical-report/diagrams/) : código fonte dos diagramas do projeto
 
  - Pasta [sources](/technical-report/sources/):
-   - [event-planner](/technical-report/sources/event-planner/): Back-end em Ruby on Rails
+   - [event-planner](/technical-report/sources/event-planner/): Back-end em Ruby on Rails + Graphql
    - [front-end](/technical-report/sources/event-planner/frontend/): SPA em React e Bootstrap
