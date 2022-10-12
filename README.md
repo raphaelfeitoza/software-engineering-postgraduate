@@ -1,4 +1,4 @@
-# Projeto Integrado -Relatório Técnico  - Planejamento de eventos
+# Projeto Integrado - Relatório Técnico  - Planejamento de eventos
 
 Repositório para armazenamento dos artefatos relacionados ao Relatório Técnico do curso Pós-graduação Lato Sensu em Arquitetura de Software Distribuído da PUC Minas Virtual.
 
