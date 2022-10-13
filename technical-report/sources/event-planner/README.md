@@ -32,6 +32,13 @@ To help testing the app, you could seed the database from the fixtures simply by
 ```
 This will run `rake db:fixtures:load`: [seeds.rb](./db/seeds.rb)
 
+<<<<<<< HEAD
+## Front-end 
+The [front-end app](./frontend/)  uses React was build from the command `create-react-app`. 
+For simplicity, it doesn't use any UI library for the components and the styling is done using [Bootstrap v5.2](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+
+=======
+>>>>>>> main
 ## Deployment instructions:
 
 This prototype uses [Aws Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/) and we deploy it uploading the generated _rails-app.zip on the already configured application. 

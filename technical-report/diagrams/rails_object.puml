@@ -1,0 +1,43 @@
+@startuml
+
+package "event-planner" {
+    object GraphqlController
+    object ApplicationController
+
+    package "graphql"{
+
+        object EventPlannerSchema
+        package "mutations" {
+            object BaseMutation
+            object CreateEvent
+            object ScheduleTeamMember
+        }
+        package "types"{
+
+            object MutationType
+            object QueryType
+            object EventDefinitionType
+            object ScheduledEventType
+            object TeamUserFunctionType
+
+        }
+
+    }
+}
+
+ApplicationController <|-- GraphqlController
+GraphqlController ..> EventPlannerSchema :execute \n query/mutations
+EventPlannerSchema o-- QueryType :defines
+EventPlannerSchema o-- MutationType :defines
+
+CreateEvent --|> BaseMutation
+ScheduleTeamMember --|> BaseMutation
+
+MutationType o-- CreateEvent
+MutationType o-- ScheduleTeamMember
+
+QueryType o-- EventDefinitionType : queries: event_definition \n event_definition \n
+QueryType o-- ScheduledEventType : query: scheduled_events
+QueryType o-- TeamUserFunctionType : query: users_by_event_definition
+
+@enduml
